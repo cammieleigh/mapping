@@ -1,0 +1,54 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ArcGIS Developer Guide: Data layers (Feature layers)</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+<link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+<script src="https://js.arcgis.com/4.29"></script>
+
+  <script>
+    require([
+      "esri/config",
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/portal/Portal",
+      "esri/layers/FeatureLayer"
+    ], function (esriConfig, Map, MapView, Portal, FeatureLayer) {
+
+        esriConfig.apiKey = "AAPK58b485fa5158422bad73bfdfd7fa9b06MWbvPpxLOrh4GkYE79J6OCHf8sfu5dysxTY98BcmCYyidhqbkHibshrsgeZXbaBE"; // Scoped to access the item below
+
+        const map = new Map({
+          basemap: "arcgis-topographic"
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [-111.78788086383598,
+                   43.82069923631352],
+          zoom: 14
+        });
+
+        const parcelsLayer = new FeatureLayer({
+          portalItem: {
+            id: "c47cbb875ad24623a287c5801fff7531"
+          }
+        });
+        map.add(parcelsLayer);
+      
+  });
+  </script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
